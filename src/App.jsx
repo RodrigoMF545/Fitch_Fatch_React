@@ -4,15 +4,13 @@ import './App.css';
 import Jogador from './components/player/jogador';
 import GameBoard from './components/GameBoard';
 import { winningCombinations } from './winningCombinations';
+import GameOver from './components/GameOver';
 
 const initialBoard = [
   [null, null, null],
   [null, null, null],
   [null, null, null]
 ];
-
-
-
 
 function App() {
   const [board, setBoard] = useState(initialBoard);
@@ -45,6 +43,12 @@ function App() {
     );
   };
 
+  const handleRestart = () => {
+    setBoard(initialBoard);
+    setCurrentPlayer("X");
+    setWinner(null);
+  };
+
 
   return (
     <div>
@@ -56,13 +60,8 @@ function App() {
         </ol>
         
         <GameBoard board={board} onSelectSquareFromApp={handleSelectSquare} />
-
-        {winner && (
-          <div className="text-center mt-4">
-            <p className="text-2xl font-bold">
-              {winner === "Empate" ? "Empate!" : `Vitória de ${winner}!`}
-            </p>
-          </div>
+       {(winner) && (
+          <GameOver winner={winner === "Draw" ? null : winner} onRestart={handleRestart} />
         )}
       </div>
     </div>
