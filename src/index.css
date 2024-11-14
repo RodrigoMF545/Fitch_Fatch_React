@@ -12,8 +12,5 @@
     background-image: 
     url('./assets/bg-pattern.png'),
     radial-gradient(circle at top, rgba(241, 210, 70, 0.98), rgba(250, 176, 103, 0.87));
-      background-size: 100% 100%, 100% 100%;
-      background-position: center, top;
-      background-repeat: no-repeat, no-repeat;
-      min-height: 110rem;/* 110rem = 1760px */
+      background-attachment:fixed ;
   }
